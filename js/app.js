@@ -17,6 +17,8 @@ var tomagotchi = {
   life: true,
   eat: function(){
     this.hunger -= 3;
+    hungerMeter.innerHTML = this.hunger;
+    this.checkDeathByEating();
   },
   checkMorph: function(){
     if(this.age === 0){
@@ -32,11 +34,44 @@ var tomagotchi = {
   },
   checkDeathByAging: function(){
     if(this.age > 10){
-      this.die();
+      this.die("old age");
     }
   },
-  die: function(){
+  checkDeathByEating: function(){
+    if(this.hunger < 0){
+      this.die("gluttony");
+    }else if(this.hunger > 10){
+      this.die("hunger");
+    }
+  },
+  die: function(cause){
     this.life = false;
-    console.log("RIP " + this.name + " is Dead");
+    alert("RIP " + this.name + " died of " + cause);
   }
 }
+
+var eatButton = document.getElementById("eat");
+var hungerMeter = document.getElementById("hunger");
+hungerMeter.innerHtml = 10;
+
+eatButton.addEventListener("click", function(){
+  tomagotchi.eat();
+});
+
+var currentPosition = 1;
+
+function updatePosition(){
+  var oldPosition = document.getElementById(currentPosition);
+  if(currentPosition % 4 === 0){
+    currentPosition = 1;
+  }else{
+    currentPosition += 1;
+  }
+  var newPosition = document.getElementById(currentPosition);
+  oldPosition.classList.add("hidden");
+  newPosition.classList.remove("hidden");
+}
+
+setInterval(function(){
+  updatePosition()
+}, 2000);
