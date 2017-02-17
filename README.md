@@ -1,11 +1,7 @@
-Add a Label for Happiness
+## Syntax Debugging Practice
 
-Change Images when tomagotchi morphs
+### Instructions
 
-Update age using the setTimeout function
-
-Add a button to "Turn out the lights", which changes the background color to black, and sets the isSleeping property to true. Click the button again should flip the lights back on
-
-Send and alert when the tomagotchi dies, and stop moving the tomagotchi
-
-Increase hunger using the setTimeout function
+- Start by properly indenting the file. Use the curly brackets as your guide.
+- Open the index.html file in Chrome, and then open the console. You will see errors. Go in to the app.js file, fix the error and refresh. Then you should see a new error.
+- When all of the errors are fixed, the console should display '11 out of 11 correct'
